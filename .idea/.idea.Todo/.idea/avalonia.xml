@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Todo/App.axaml" value="Todo/Todo.csproj" />
+        <entry key="Todo/UserControls/AddTodoItemResource.axaml" value="Todo/Todo.csproj" />
+        <entry key="Todo/UserControls/AddTodoItemUc.axaml" value="Todo/Todo.csproj" />
+        <entry key="Todo/UserControls/TodoItemsUC.axaml" value="Todo/Todo.csproj" />
+        <entry key="Todo/UserControls/TodoItemsUc.axaml" value="Todo/Todo.csproj" />
+        <entry key="Todo/Views/AddTodoItemWindow.axaml" value="Todo/Todo.csproj" />
+        <entry key="Todo/Views/MainWindow.axaml" value="Todo/Todo.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

@@ -2,7 +2,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:dialogHost="clr-namespace:DialogHost;assembly=DialogHost.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
              x:Class="Todo.UserControls.TodoItemsUc">
-    Welcome to Avalonia!
+
+    <dialogHost:DialogHost CloseOnClickAway="True" Identifier="MainDialogHost">
+        <dialogHost:DialogHost.DialogContent>
+        </dialogHost:DialogHost.DialogContent>
+
+        <DockPanel>
+            <Button DockPanel.Dock="Bottom" HorizontalAlignment="Center"
+                    Click="AddItemButton_OnClick">
+                Add Item
+            </Button>
+            <ItemsControl Items="{Binding TodoItems}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox IsChecked="{Binding IsChecked}"
+                                  Content="{Binding Description}">
+                        </CheckBox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </DockPanel>
+    </dialogHost:DialogHost>
+
+    <UserControl.Resources>
+        <DockPanel Margin="4" x:Key="AddTodoItemDialog">
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center"
+                        Margin="0 4 0 0">
+                <Button Width="80" HorizontalContentAlignment="Center"
+                        Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=dialogHost:DialogHost}, Path=CloseDialogCommand}"
+                        CommandParameter="{Binding #DescriptionTextBox.Text}">
+                    Add
+                </Button>
+                <Button Width="80" HorizontalContentAlignment="Center"
+                        Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=dialogHost:DialogHost}, Path=CloseDialogCommand}">
+                    Cancel
+                </Button>
+            </StackPanel>
+            <TextBox Watermark="todo item..." AcceptsReturn="True" x:Name="DescriptionTextBox"></TextBox>
+        </DockPanel>
+    </UserControl.Resources>
 </UserControl>

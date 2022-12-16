@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Todo.Models;
 using Todo.Services.Data;
@@ -14,4 +15,6 @@ public partial class TodoItemsUcVm : ObservableObject
         var db = new SimDatabase();
         _todoItems = db.GetTodoItems();
     }
+
+    public void AddItem(string description) => TodoItems = TodoItems.Append(new TodoItem() {Description = description});
 }

@@ -8,6 +8,9 @@ namespace Todo
 {
     public partial class App : Application
     {
+        public static MainWindow MainView;
+        
+        
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
@@ -21,6 +24,7 @@ namespace Todo
                 {
                     DataContext = new MainWindowViewModel(),
                 };
+                MainView = (MainWindow) desktop.MainWindow;
             }
 
             base.OnFrameworkInitializationCompleted();
